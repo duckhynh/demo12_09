@@ -19,17 +19,22 @@ router.get("/profile", protect, (req, res) => {
 
 /**
  * @swagger
- * /api/protected/data:
+ * /api/protected:
  *   get:
- *     summary: Lấy dữ liệu bảo vệ (cần token)
- *     tags: [Protected]
+ *     summary: Truy cập API protected
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Trả về dữ liệu thành công
- *       401:
- *         description: Không có token hoặc token sai
+ *         description: Trả về thông tin protected
  */
+
+router.get("/", protect, (req, res) => {
+  res.json({
+    message: "Đã vào protected API ✅",
+    user: req.user,
+  });
+});
+
 
 export default router;
