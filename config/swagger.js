@@ -20,8 +20,12 @@ const options = {
             description: "API documentation cho project demo",
         },
         servers: [{
-            url: "http://localhost:5000", // khi deploy thì đổi thành link Render
-        }, ],
+                url: "http://localhost:5000", // khi deploy thì đổi thành link Render
+            },
+            {
+                url: "https://demo12-09.onrender.com", // 🟢 Khi deploy Render
+            },
+        ],
     },
     apis: ["./routes/*.js"], // đường dẫn tới file routes để swagger đọc
 };

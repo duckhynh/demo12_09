@@ -16,8 +16,13 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors());           // cho phép front-end gọi API
 app.use(express.json());   // parse JSON body
+const corsOptions = {
+  origin: "*", // Cho phép tất cả domain (khi deploy Render thì Swagger UI vẫn gọi được API)
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));
 
 
 // Mount route
