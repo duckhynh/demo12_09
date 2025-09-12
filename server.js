@@ -4,6 +4,9 @@ import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/auth.js";
 import protectedRoutes from "./routes/protected.js";
+import { swaggerDocs } from "./config/swagger.js";
+
+
 
 dotenv.config(); // load biến môi trường
 
@@ -15,6 +18,7 @@ const app = express();
 // Middleware
 app.use(cors());           // cho phép front-end gọi API
 app.use(express.json());   // parse JSON body
+
 
 // Mount route
 app.use("/api/auth", authRoutes);
@@ -29,4 +33,5 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server đang chạy trên port ${PORT}`);
+  swaggerDocs(app, PORT); // gọi swagger khi server start
 });
