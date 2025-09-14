@@ -12,13 +12,6 @@ router.get("/profile", protect, (req, res) => {
 
 /**
  * @swagger
- * tags:
- *   name: Protected
- *   description: API cần JWT token
- */
-
-/**
- * @swagger
  * /api/protected:
  *   get:
  *     summary: Truy cập API protected
